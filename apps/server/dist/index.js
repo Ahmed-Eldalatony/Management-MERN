@@ -5,6 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const user_route_1 = __importDefault(require("./routes/user.route"));
+const auth_route_1 = require("./routes/auth.route");
+require("dotenv").config();
 const port = 3000;
 const app = (0, express_1.default)();
 mongoose_1.default
@@ -15,9 +18,12 @@ mongoose_1.default
     .catch((err) => {
     console.log(err);
 });
-app.get("/", (req, res) => {
-    res.send("Hello from ts express");
+app.use(express_1.default.json());
+app.use("/api/auth", auth_route_1.authRouter);
+app.use("/api/user", user_route_1.default);
+app.use("/api", (req, res) => {
+    res.json("Hello from the route");
 });
 app.listen(port, () => {
-    console.log("Express listen on port " + port);
+    console.log("app listening on port " + port);
 });
