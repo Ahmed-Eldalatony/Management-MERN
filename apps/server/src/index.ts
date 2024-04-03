@@ -1,7 +1,8 @@
-import express, { Response, Request } from "express";
 import mongoose from "mongoose";
+import express from "express";
 import userRouter from "./routes/user.route";
 import { authRouter } from "./routes/auth.route";
+import { Request, Response, NextFunction } from "express";
 require("dotenv").config();
 
 const port = 3000;
@@ -26,4 +27,15 @@ app.use("/api", (req: Request, res: Response) => {
 
 app.listen(port, () => {
   console.log("app listening on port " + port);
+});
+
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal server error ";
+  return res.status(statusCode).json({
+    success: false,
+    status: statusCode,
+    message,
+    stack: err.stack,
+  });
 });
