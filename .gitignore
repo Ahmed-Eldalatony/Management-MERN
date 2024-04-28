@@ -17,7 +17,6 @@ node_modules
 */node_modules
 *.env
 *.env.local
-
 *build
 *dist
 apps/server/dist
