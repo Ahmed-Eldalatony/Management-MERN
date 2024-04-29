@@ -12,6 +12,73 @@ importers:
         specifier: ^1.20.2
         version: 1.20.2
 
+  apps/api:
+    dependencies:
+      '@types/bcryptjs':
+        specifier: ^2.4.6
+        version: 2.4.6
+      '@types/cookie-parser':
+        specifier: ^1.4.7
+        version: 1.4.7
+      '@types/cors':
+        specifier: ^2.8.17
+        version: 2.8.17
+      '@types/jsonwebtoken':
+        specifier: ^9.0.6
+        version: 9.0.6
+      '@types/multer':
+        specifier: ^1.4.11
+        version: 1.4.11
+      axios:
+        specifier: ^1.6.8
+        version: 1.6.8
+      bcryptjs:
+        specifier: ^2.4.3
+        version: 2.4.3
+      cookie-parser:
+        specifier: ^1.4.6
+        version: 1.4.6
+      cors:
+        specifier: ^2.8.5
+        version: 2.8.5
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      jsonwebtoken:
+        specifier: ^9.0.2
+        version: 9.0.2
+      mongoose:
+        specifier: ^8.2.4
+        version: 8.2.4
+      multer:
+        specifier: 1.4.5-lts.1
+        version: 1.4.5-lts.1
+      react-sweetalert2:
+        specifier: ^0.6.0
+        version: 0.6.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+    devDependencies:
+      '@types/express':
+        specifier: ^4.17.21
+        version: 4.17.21
+      '@types/node':
+        specifier: ^20.11.30
+        version: 20.11.30
+      concurrently:
+        specifier: ^8.2.2
+        version: 8.2.2
+      express:
+        specifier: ^4.19.2
+        version: 4.19.2
+      nodemon:
+        specifier: ^3.1.0
+        version: 3.1.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.11.30)(typescript@5.4.3)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.4.3
+
   apps/client:
     dependencies:
       '@types/axios':
