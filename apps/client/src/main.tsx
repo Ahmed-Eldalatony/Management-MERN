@@ -10,6 +10,8 @@ import SignUp from "./pages/SignUp.tsx";
 import LogIn from "./pages/LogIn.tsx";
 import Header from "./components/Header.tsx";
 import { PersistGate } from "redux-persist/integration/react";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+if (import.meta.env.PROD) disableReactDevTools();
 
 const router = createBrowserRouter([
   {

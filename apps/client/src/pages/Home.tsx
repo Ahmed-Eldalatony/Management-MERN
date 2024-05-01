@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { State, Task } from "../utils/sharedTypes";
 import { twMerge } from "tailwind-merge";
 
+const serverUrl = import.meta.env.VITE_APP_API_URL || "";
 function Home() {
   const [taskInput, setTaskInput] = useState("");
   const [tasks, setTasks]: [Task[], any] = useState([]);
@@ -20,12 +21,13 @@ function Home() {
 
   const getTasks = async () => {
     try {
-      const response = await fetch(`/api/task?id=${_id}`);
+      const response = await fetch(`${serverUrl}/api/task?id=${_id}`);
       if (!response.ok) throw new Error(response.statusText);
       const { data } = await response.json();
       setTasks(data || []);
     } catch (error: any) {
-      if (error.message === "Unauthorized") navigate("/login");
+      console.log(error);
+      // if (error.message === "Unauthorized") navigate("/login");
     }
   };
   useEffect(() => {

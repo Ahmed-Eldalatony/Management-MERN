@@ -6,8 +6,9 @@ import {
 } from "../constants/actionsTypes";
 import { type User } from "../../utils/sharedTypes";
 
+const serverUrl = import.meta.env.VITE_APP_API_URL || "";
 export const fetchUser = async (email: string, password: string) => {
-  const response = await fetch("/api/auth/login", {
+  const response = await fetch(`${serverUrl}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

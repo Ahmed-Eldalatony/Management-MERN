@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Input from "../components/Input";
 
 type InputChange = ChangeEvent<HTMLInputElement>;
+const serverUrl = import.meta.env.VITE_APP_API_URL || "";
 function SignUp() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -25,8 +26,8 @@ function SignUp() {
     passwordConfirm,
     image,
   ]);
-  const authUrl = "/api/auth/signup";
-  const userUrl = "/api/user/signup";
+  const authUrl = `${serverUrl}/api/auth/signup`;
+  const userUrl = `${serverUrl}/api/user/signup`;
   const handleForm = (url: string) => {
     setIsLoading(true);
     setError(null);
