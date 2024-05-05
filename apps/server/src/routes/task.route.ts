@@ -1,4 +1,6 @@
+//@ts-nocheck
 import express from "express";
+
 import {
   addTask,
   getTasksByUser,

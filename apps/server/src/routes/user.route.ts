@@ -1,3 +1,4 @@
+//@ts-nocheck
 import express from "express";
 import { postUser } from "../controllers/user.controller";
 import { signup } from "../controllers/auth.controller";

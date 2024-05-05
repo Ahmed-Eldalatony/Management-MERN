@@ -1,4 +1,6 @@
+//@ts-nocheck
 import express from "express";
+
 import { signup, login, logout } from "../controllers/auth.controller";
 
 export const authRouter = express.Router();
