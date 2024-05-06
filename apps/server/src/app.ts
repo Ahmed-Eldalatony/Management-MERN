@@ -31,6 +31,7 @@ const __dirname = path.resolve();
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+// try different way to access the client or watch the video in the tablet
 app.use(express.static(path.join(__dirname, "/client/dist")));
 app.use("/api/auth", upload, authRouter);
 app.use("/api/user", upload, userRouter);
@@ -41,11 +42,7 @@ app.use("/api", (req: Request, res: Response) => {
 });
 // app.use("/.netlify/functions/api", router);
 app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.resolve(__dirname + "client", "dist", "index.html"));
-});
-
-app.listen(port, () => {
-  console.log("app is listening on port" + port);
+  res.sendFile(path.join(__dirname + "client", "dist", "index.html"));
 });
 
 app.use(errorMiddleware);
