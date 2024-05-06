@@ -1,34 +1,3 @@
-//@ts-nocheck
-// import express from 'express';
-// import morgan from 'morgan';
-// import helmet from 'helmet';
-// import cors from 'cors';
-
-// import * as middlewares from './middlewares';
-// import api from './api';
-// import MessageResponse from './interfaces/MessageResponse';
-
-// require('dotenv').config();
-
-// const app = express();
-
-// app.use(morgan('dev'));
-// app.use(helmet());
-// app.use(cors());
-// app.use(express.json());
-
-// app.get<{}, MessageResponse>('/', (req, res) => {
-//   res.json({
-//     message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
-//   });
-// });
-
-// app.use('/api/v1', api);
-
-// app.use(middlewares.notFound);
-// app.use(middlewares.errorHandler);
-
-// export default app;
 import express from "express";
 import userRouter from "./routes/user.route";
 import cookieParser from "cookie-parser";
@@ -41,6 +10,7 @@ import taskRouter from "./routes/task.route";
 import cors from "cors";
 import { protectRoutes } from "./middleware/requireAuth";
 // import serverless from "serverless-http";
+import path from "path";
 
 require("dotenv").config();
 
@@ -57,10 +27,11 @@ app.use(
   })
 );
 
+const __dirname = path.resolve();
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
-app.use(express.static("uploads"));
+app.use(express.static(path.join(__dirname, "uploads")));
 app.use("/api/auth", upload, authRouter);
 app.use("/api/user", upload, userRouter);
 app.use("/api/", protectRoutes, taskRouter);
