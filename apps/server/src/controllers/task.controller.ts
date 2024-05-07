@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, response } from "express";
 import Task from "../models/task.model";
+import User from "../models/user.model";
 
 export const addTask = async (
   req: Request,
@@ -17,13 +18,19 @@ export const addTask = async (
       category,
       user,
     });
+
     await task.save();
+    if (task) {
+      const user = await User.findById(task.user);
+      user.tasks.push(task);
+      await user.save();
+    }
     res.status(201).json({ message: "task created successfully", data: task });
   } catch (error) {
     res.status(400).json({ error: error });
     next(error);
   }
-};
+}; 
 export const getTasksByUser = async (
   req: Request,
   res: Response,

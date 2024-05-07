@@ -14,6 +14,7 @@ function Home() {
   const navigate = useNavigate();
   const { data } = useSelector((state: State) => state.user.user);
   const { _id } = data || {};
+  console.log("this is from redux", _id);
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value);
   };

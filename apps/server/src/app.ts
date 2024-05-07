@@ -10,11 +10,10 @@ import taskRouter from "./routes/task.route";
 import cors from "cors";
 import { protectRoutes } from "./middleware/requireAuth";
 // import serverless from "serverless-http";
+import User from "./models/user.model";
 import path from "path";
-
 require("dotenv").config();
 
-const port = 3000;
 export const app = express();
 
 mongoConnect();
@@ -27,12 +26,13 @@ app.use(
   })
 );
 
-const __dirname = path.resolve();
+
+//renaming the dirname
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+app.use(express.static("uploads"));
 // try different way to access the client or watch the video in the tablet
-app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use("/api/auth", upload, authRouter);
 app.use("/api/user", upload, userRouter);
 app.use("/api/", protectRoutes, taskRouter);
@@ -40,10 +40,11 @@ app.use("/api/", protectRoutes, taskRouter);
 app.use("/api", (req: Request, res: Response) => {
   res.json("hello  from the route");
 });
+
 // app.use("/.netlify/functions/api", router);
-app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname + "client", "dist", "index.html"));
-});
+// app.get("*", (req: Request, res: Response) => {
+//   res.sendFile(path.join(dirname + "client", "dist", "index.html"));
+// });
 
 app.use(errorMiddleware);
 export default app;

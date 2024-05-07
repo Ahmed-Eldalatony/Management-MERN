@@ -13,13 +13,15 @@ export const postUser = async (
   next: NextFunction
 ) => {
   const { name, email, password } = req.body;
-  const image = req.files[0].path;
+  // const basPath = `${req.protocol}://${req.get("host")}/`;
+  const imageName = req.files[0].filename;
+  const image = `${imageName}`;
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
   const user = new User({ name, email, password: hashedPassword, image });
   try {
     await user.save();
-    res.status(201).json({ message: "User created successfully", data: user });
+    res.status(201).json({ message: "User Created successfully", data: user });
   } catch (error) {
     res.status(400).json({ error: error });
     next(error);

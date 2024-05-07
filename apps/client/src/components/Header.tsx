@@ -4,6 +4,7 @@ import { State } from "../utils/sharedTypes";
 function Header() {
   const { user } = useSelector((state: State) => state.user);
   const dispatch = useDispatch();
+  const url = import.meta.env.VITE_APP_API_URL || "http://localhost:3000/";
   const logoutHandler = async () => {
     try {
       await fetch("/api/auth/logout");
@@ -41,9 +42,7 @@ function Header() {
             {user?.data?.image && (
               <li>
                 <img
-                  src={
-                    "http://localhost:3000/" + user.data.image.split("\\")[1]
-                  }
+                  src={url + user.data.image}
                   className="w-10 h-10 object-cover rounded-lg"
                   alt="there is an error"
                 />
