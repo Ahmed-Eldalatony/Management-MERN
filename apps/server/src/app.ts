@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 // try different way to access the client or watch the video in the tablet
-app.use(express.static(path.join(__dirname, "/client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use("/api/auth", upload, authRouter);
 app.use("/api/user", upload, userRouter);
 app.use("/api/", protectRoutes, taskRouter);
