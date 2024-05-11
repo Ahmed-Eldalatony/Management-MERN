@@ -73,10 +73,7 @@ function SignUp() {
 
   const onImageChange = (e: InputChange) => {
     const currentImage = e.target.files?.[0] as File;
-    if (currentImage.name.length > 30) {
-      // alert("Image name should be shorter than 30 characters");
-      return;
-    }
+
     // @ts-ignore
     setClientImage(URL.createObjectURL(currentImage));
     setImage(currentImage);

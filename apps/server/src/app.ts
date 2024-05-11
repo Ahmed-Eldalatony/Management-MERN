@@ -10,10 +10,9 @@ import taskRouter from "./routes/task.route";
 import cors from "cors";
 import { protectRoutes } from "./middleware/requireAuth";
 // import serverless from "serverless-http";
-import User from "./models/user.model";
-import path from "path";
-require("dotenv").config();
 
+import dotenv from "dotenv";
+dotenv.config();
 export const app = express();
 
 mongoConnect();
@@ -26,15 +25,14 @@ app.use(
   })
 );
 
-
 //renaming the dirname
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(express.static("uploads"));
 // try different way to access the client or watch the video in the tablet
-app.use("/api/auth", upload, authRouter);
-app.use("/api/user", upload, userRouter);
+app.use("/api/auth", upload.any(), authRouter);
+app.use("/api/user", upload.any(), userRouter);
 app.use("/api/", protectRoutes, taskRouter);
 
 app.use("/api", (req: Request, res: Response) => {
