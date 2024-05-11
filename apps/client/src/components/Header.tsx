@@ -42,7 +42,7 @@ function Header() {
             {user?.data?.image && (
               <li>
                 <img
-                  src={url + user.data.image}
+                  src={user.data.image}
                   className="w-10 h-10 object-cover rounded-lg"
                   alt="there is an error"
                 />
