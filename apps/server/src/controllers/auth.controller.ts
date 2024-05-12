@@ -87,11 +87,11 @@ export const logout = async (
 ) => {
   res
     .clearCookie("access_token", {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
+      httpOnly: false,
+      sameSite: "lax",
+      secure: false,
       maxAge: 1000 * 60 * 60 * 24 * 3,
-      domain: "https://manage-mern.netlify.app/",
+      domain: "https://manage-mern.vercel.app/",
     })
     .status(200)
     .json({ message: "Logged out" });
