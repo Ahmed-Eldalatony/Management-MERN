@@ -64,6 +64,7 @@ export const login = async (
       sameSite: "none",
       secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 3,
+      domain: "https://manage-mern.netlify.app/",
     });
 
     // @ts-ignore
@@ -90,6 +91,7 @@ export const logout = async (
       sameSite: "none",
       secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 3,
+      domain: "https://manage-mern.netlify.app/",
     })
     .status(200)
     .json({ message: "Logged out" });

@@ -39,10 +39,6 @@ app.use("/api", (req: Request, res: Response) => {
   res.json("hello  from the route");
 });
 
-// app.use("/.netlify/functions/api", router);
-// app.get("*", (req: Request, res: Response) => {
-//   res.sendFile(path.join(__dirname + "client", "dist", "index.html"));
-// });
 
 app.use(errorMiddleware);
 export default app;
