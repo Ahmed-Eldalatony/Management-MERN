@@ -28,7 +28,6 @@ function Home() {
       setTasks(data || []);
     } catch (error: any) {
       console.log(error);
-      if (error.message === "Unauthorized") navigate("/login");
     }
   };
   useEffect(() => {
