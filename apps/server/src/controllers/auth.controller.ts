@@ -60,9 +60,9 @@ export const login = async (
     }
     const token = Jwt.sign({ id: user._id }, process.env.JWT_SECRET!);
     res.cookie("access_token", token, {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
+      httpOnly: false,
+      sameSite: "lax",
+      secure: false,
       maxAge: 1000 * 60 * 60 * 24 * 3,
       domain: "https://manage-mern.vercel.app/",
     });
