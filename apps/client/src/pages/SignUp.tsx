@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import Input from "../components/Input";
 
 type InputChange = ChangeEvent<HTMLInputElement>;
-const serverUrl = import.meta.env.VITE_APP_API_URL || "";
+// const serverUrl = import.meta.env.VITE_APP_API_URL || "";
+
+const serverUrl = "https://managem-mern-api.vercel.app";
 function SignUp() {
   const navigate = useNavigate();
   const [name, setName] = useState("");

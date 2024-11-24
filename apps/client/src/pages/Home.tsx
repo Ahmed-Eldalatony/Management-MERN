@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 import { State, Task } from "../utils/sharedTypes";
 import { twMerge } from "tailwind-merge";
 
-const serverUrl = import.meta.env.VITE_APP_API_URL || "";
+// const serverUrl = import.meta.env.VITE_APP_API_URL || "";
+
+const serverUrl = "https://managem-mern-api.vercel.app";
 function Home() {
   const [taskInput, setTaskInput] = useState("");
   const [tasks, setTasks]: [Task[], any] = useState([]);

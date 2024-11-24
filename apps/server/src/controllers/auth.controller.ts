@@ -51,6 +51,7 @@ export const login = async (
   next: NextFunction
 ) => {
   const { email, password } = req.body;
+  console.log(email, password);
   try {
     const user: UserDto | null = await User.findOne({ email });
     if (!user || !bcryptjs.compareSync(password, user.password)) {
@@ -61,8 +62,8 @@ export const login = async (
     const token = Jwt.sign({ id: user._id }, process.env.JWT_SECRET!);
     res.cookie("access_token", token, {
       httpOnly: false,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 3,
       domain: "https://manage-mern.vercel.app/",
     });
@@ -88,10 +89,10 @@ export const logout = async (
   res
     .clearCookie("access_token", {
       httpOnly: false,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 3,
-      domain: "https://manage-mern.vercel.app/",
+      domain: "manage-mern.vercel.app/",
     })
     .status(200)
     .json({ message: "Logged out" });

@@ -6,7 +6,9 @@ import {
 } from "../constants/actionsTypes";
 import { type User } from "../../utils/sharedTypes";
 
-const serverUrl = import.meta.env.VITE_APP_API_URL || "";
+// const serverUrl = import.meta.env.VITE_APP_API_URL || "";
+const serverUrl = "https://managem-mern-api.vercel.app";
+
 export const fetchUser = async (email: string, password: string) => {
   const response = await fetch(`${serverUrl}/api/auth/login`, {
     method: "POST",
